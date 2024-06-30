@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
+/* Handmade components */
 import { BaseMapModule } from './base-map/base-map.module';
+import { NavigationModule } from './navigation/navigation.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BaseMapModule } from './base-map/base-map.module';
     BrowserModule,
     AppRoutingModule,
     BaseMapModule,
+    NavigationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
