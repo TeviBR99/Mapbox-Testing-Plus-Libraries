@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+
+import { BaseMapModule } from './base-map/base-map.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxMapboxGLModule.withConfig({
-      accessToken: 'pk.eyJ1IjoidGV2aWJyIiwiYSI6ImNseTFndWswaDAwamkycXM3Nnowemx2MmcifQ.KJDulCaawptiKUB30dBE1w'
-    })
+    BaseMapModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
