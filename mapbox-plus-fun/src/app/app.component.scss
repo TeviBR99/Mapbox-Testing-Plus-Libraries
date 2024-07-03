@@ -1,2 +1,12 @@
+.main-container{
+  position: absolute;
 
+  .search-list{
+    position: relative;
+    z-index: 1;
+    height: 100px;
+    width: 100px;
+  }
+
+}
 

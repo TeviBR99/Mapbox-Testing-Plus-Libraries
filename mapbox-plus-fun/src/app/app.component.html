@@ -1,2 +1,16 @@
+<div>
+  <div class="main-container">
+    <div class="search-list">
 
-<app-map></app-map>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </div>
+  <app-map></app-map>
+</div>
+
+
+
