@@ -32,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     SearchListModule,
     HttpClientModule
   ],
-  providers: [CityHttpService, CityService],
+  providers: [
+    CityService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

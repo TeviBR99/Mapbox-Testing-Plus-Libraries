@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, startWith, map } from 'rxjs';
+import { CityService } from 'src/app/shared/services/cities/city-service.service';
 
 @Component({
   selector: 'app-search-list',
@@ -13,8 +14,9 @@ export class SearchListComponent implements OnInit{
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> = new Observable<string[]>();
 
+  constructor(private cityService: CityService) {}
+
   ngOnInit() {
-    this.search()
   }
 
   private _filter(value: string): string[] {
@@ -28,5 +30,17 @@ export class SearchListComponent implements OnInit{
       startWith(''),
       map(value => this._filter(value || '')),
     );
+  }
+
+  public loadCities(){
+    const city = 'Spain'
+    this.cityService.getCities(city).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (err) => {
+        console.error("Error fetching cities", err);
+      }
+    });
   }
 }
