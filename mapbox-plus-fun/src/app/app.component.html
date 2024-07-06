@@ -1,13 +1,20 @@
 <div>
   <div class="main-container">
-    <div class="search-list">
-
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of options" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </div>
+    <!-- <div class="search-list"> -->
+      <form class="search-list">
+        <input type="text" class="input-country-list"
+        placeholder="Pick one"
+        aria-label="Number"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+    <!-- </div> -->
   </div>
   <app-map></app-map>
 </div>
