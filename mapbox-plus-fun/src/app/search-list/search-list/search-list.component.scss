@@ -1,5 +1,7 @@
-    .input-country-list{
-      background-color: red;
-      width: 200px;
-      height: 25px;
-    }
+@import '../../../assets/variables.scss';
+
+.input-country-list{
+  background-color: map-get($neutral-colors, 2);
+  width: 200px;
+  height: 25px;
+}
