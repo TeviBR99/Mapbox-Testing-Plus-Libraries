@@ -8,7 +8,7 @@ export class CityService {
 
   constructor(private cityHttpService: CityHttpService) { }
 
-  public getCities(){
-    return this.cityHttpService.getHttpCalCities();
+  public getCities(city: string){
+    return this.cityHttpService.getHttpCalCities(city);
   }
 }

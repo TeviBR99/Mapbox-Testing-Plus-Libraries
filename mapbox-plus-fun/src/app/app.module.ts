@@ -13,9 +13,9 @@ import { BaseMapModule } from './base-map/base-map.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchListModule } from './search-list/search-list.module';
-import { CountryService } from './shared/services/countries/country-service.service';
-import { CountryHttpService } from './shared/services/countries/country-http-service.service';
 import { CityHttpService } from './shared/services/cities/city-http-service.service';
+import { CityService } from './shared/services/cities/city-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,9 +29,10 @@ import { CityHttpService } from './shared/services/cities/city-http-service.serv
     BrowserAnimationsModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    SearchListModule
+    SearchListModule,
+    HttpClientModule
   ],
-  providers: [CountryService, CountryHttpService],
+  providers: [CityHttpService, CityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

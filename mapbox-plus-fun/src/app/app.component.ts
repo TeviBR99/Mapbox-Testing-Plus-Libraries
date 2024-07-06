@@ -21,6 +21,14 @@ export class AppComponent implements OnInit{
   }
 
   public loadCities(){
-    this.cityService.getCities()
+    const city = 'Spain'
+    this.cityService.getCities(city).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (err) => {
+        console.error("Error fetching cities", err);
+      }
+    });
   }
 }
