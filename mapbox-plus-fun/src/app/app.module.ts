@@ -13,6 +13,9 @@ import { BaseMapModule } from './base-map/base-map.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchListModule } from './search-list/search-list.module';
+import { CountryService } from './shared/services/countries/country-service.service';
+import { CountryHttpService } from './shared/services/countries/country-http-service.service';
+import { CityHttpService } from './shared/services/cities/city-http-service.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { SearchListModule } from './search-list/search-list.module';
     ReactiveFormsModule,
     SearchListModule
   ],
-  providers: [],
+  providers: [CountryService, CountryHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

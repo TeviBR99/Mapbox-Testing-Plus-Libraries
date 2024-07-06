@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable } from 'rxjs';
+import { CityService } from './shared/services/cities/city-service.service';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +14,13 @@ export class AppComponent implements OnInit{
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> = new Observable<string[]>();
 
+  constructor(private cityService: CityService) {}
+
   ngOnInit() {
-    this.search()
+    this.loadCities();
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  public search(){
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+  public loadCities(){
+    this.cityService.getCities()
   }
 }

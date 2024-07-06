@@ -1,7 +1,10 @@
 @import '../../../assets/variables.scss';
 
-.input-country-list{
-  background-color: map-get($neutral-colors, 2);
-  width: 200px;
-  height: 25px;
+.box{
+  .input-country-list{
+    background-color: map-get($neutral-colors, 6);
+    width: 300px;
+    height: 25px;
+  }
 }
+
