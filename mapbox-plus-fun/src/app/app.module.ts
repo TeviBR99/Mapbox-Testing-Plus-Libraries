@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 /* Angular Material Modules*/
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
-/* Handmade components */
+/* Handmade modules */
 import { BaseMapModule } from './base-map/base-map.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchListModule } from './search-list/search-list.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavigationModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SearchListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
