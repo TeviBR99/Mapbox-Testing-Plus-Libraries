@@ -1,9 +1,10 @@
-<form class="box">
-    <input type="text" class="input-country-list" placeholder="Pick one" aria-label="Number"
-    matInput [formControl]="myControl" [matAutocomplete]="auto" >
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"  (optionSelected)="selectCity($event)">
-      <mat-option *ngFor="let city of filteredCities | async" [value]="city" >
-        {{city}}
-      </mat-option>
-    </mat-autocomplete>
-</form>
+<div class="box" [formGroup]="form">
+    <input type="text" formControlName="cityToSearch" (keydown)="search()" class="input-country-list" placeholder="Pick one" >
+    <div *ngFor="let city of filteredCities$ | async" >
+      <p class="select-city" (click)="selectCity(city)">{{city}}</p>
+    </div>
+</div>
+
+
+
+
