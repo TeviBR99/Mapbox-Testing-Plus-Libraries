@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, startWith, map } from 'rxjs';
+import { CitiesApi } from 'src/app/shared/models/cities-api.model';
 import { CityService } from 'src/app/shared/services/cities/city-service.service';
 
 @Component({
@@ -11,36 +12,45 @@ import { CityService } from 'src/app/shared/services/cities/city-service.service
 export class SearchListComponent implements OnInit{
 
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]> = new Observable<string[]>();
+  cities!: CitiesApi;
+  filteredCities: Observable<string[]> = new Observable<string[]>();
 
   constructor(private cityService: CityService) {}
 
   ngOnInit() {
+    this.loadCities()
+    this.search()
   }
 
   public search(){
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+    console.log("search")
+    // this.filteredCities = this.myControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => {
+    //     const name = typeof value === 'string' ? value : value?.data.name;
+    //     return name ? this._filter(name as string) : this.cities.slice();
+    //   }),
+    // );
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.cities.data.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
   public loadCities(){
-    const city = 'Spain'
-    this.cityService.getCities(city).subscribe({
+    this.cityService.getAllCities().subscribe({
       next: (response) => {
-        console.log(response);
+        this.cities = new CitiesApi(response.data, response.error, response.msg)
       },
       error: (err) => {
         console.error("Error fetching cities", err);
       }
-    });
+    })
+  }
+
+  public selectCity(event: any){
+    const citySelected = event.value
+    console.log(citySelected)
   }
 }

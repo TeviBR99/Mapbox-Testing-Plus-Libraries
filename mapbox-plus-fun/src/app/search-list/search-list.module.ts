@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SearchListComponent } from './search-list/search-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 
 
@@ -13,7 +15,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   imports: [
     CommonModule,
     MatAutocompleteModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     SearchListComponent

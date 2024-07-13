@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CitiesApi } from '../../models/cities-api.model';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class CityHttpService {
 
   constructor(private httpClient: HttpClient ) { }
 
-  public getHttpCalCities(city:string, state?: string, country?: string): Observable<any[]>{
+  public getCity(city:string, state?: string, country?: string): Observable<any[]>{
     const headers = new HttpHeaders({
       'X-Api-Key':'fDIQ248ulO8ThslFXCf3Yg==T5HzTHkIDO58FluX'
     });
@@ -28,5 +29,11 @@ export class CityHttpService {
     }
 
     return this.httpClient.get<any[]>( this.apiUrl + city, { headers, params})
+  }
+
+  public getHttpCallCitiesFromServe(): Observable<CitiesApi>{
+    const url = 'https://countriesnow.space/api/v0.1/countries/positions';
+
+    return this.httpClient.get<CitiesApi>(url);
   }
 }
