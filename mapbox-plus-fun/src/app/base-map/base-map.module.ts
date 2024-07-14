@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapComponent } from './map/map.component';
-import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { MapService } from 'ngx-mapbox-gl';
+import { LayersService } from './map/services/layers.service';
+import { SourcesService } from './map/services/sources.service';
+import { GeojsonService } from './map/services/geojson.service';
 
 
 @NgModule({
@@ -10,9 +13,12 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
   ],
   imports: [
     CommonModule,
-    NgxMapboxGLModule.withConfig({
-      accessToken: 'pk.eyJ1IjoidGV2aWJyIiwiYSI6ImNseTFndWswaDAwamkycXM3Nnowemx2MmcifQ.KJDulCaawptiKUB30dBE1w'
-    }),
+  ],
+  providers: [
+    MapService,
+    LayersService,
+    SourcesService,
+    GeojsonService
   ],
   exports: [
     MapComponent

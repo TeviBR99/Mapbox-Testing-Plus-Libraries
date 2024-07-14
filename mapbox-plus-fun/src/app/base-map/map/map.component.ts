@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CityService } from 'src/app/shared/services/cities/city-service.service';
 import * as mapbox from 'mapbox-gl'
+import { BaseMapService } from './services/base-map.service';
+
 
 @Component({
   selector: 'app-map',
@@ -11,14 +13,13 @@ export class MapComponent implements OnInit{
 
   map!: mapbox.Map
 
-  constructor(private cityService: CityService){}
+  constructor(private cityService: CityService,
+    private baseMapService: BaseMapService
+  ){}
 
   ngOnInit(){
-    this.cityService.citySelected$.subscribe((selectedData) =>{
-      console.log(selectedData)
-    })
-
     this.initMap()
+    this.flyingToCity()
   }
 
   initMap(){
@@ -32,5 +33,22 @@ export class MapComponent implements OnInit{
       center: [initialLat, initialLng],
       zoom: initialZoom
     })
+
+    // this.map.on('load', () => {
+    //   this.baseMapService.createSources(this.map);
+    //   this.baseMapService.createLayers(this.map);
+    // }).on('zoom', (e) => {
+    //   console.log(e)
+    // });
   }
+
+  flyingToCity(){
+    this.cityService.citySelected$.subscribe((selectedData) =>{
+      console.log("flyingToCity: ", selectedData)
+      this.baseMapService.selectCity(this.map, selectedData)
+    })
+  }
+
+
+
 }
