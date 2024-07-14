@@ -50,7 +50,16 @@ export class SearchListComponent implements OnInit{
 
   public selectCity(city: any){
     const citySelected = this.cities.data.filter(c => c.name.includes(city))
-    console.log("city Selected: ", citySelected)
+    if(citySelected.length > 0){
+      this.cityService.selectCity(citySelected[0])
+      this.closeSearchList()
+    }
+  }
+
+  closeSearchList(){
+    this.form.value.cityToSearch = '';
+    this.filteredCities.next([])
+    console.log(this.form.value)
   }
 
 
